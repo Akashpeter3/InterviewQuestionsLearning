@@ -36,7 +36,7 @@ public class InterviewQuestions {
         //countFreequency();
         //checkChars();
         //toggleString();
-        uniqueCharacters();
+        //uniqueCharacters();
 
 
     }
