@@ -35,8 +35,19 @@ public class InterviewQuestions {
         //countingOFDigits();
         //countFreequency();
         //checkChars();
+        //toggleString();
 
 
+    }
+
+    private static void toggleString() {
+
+        String name = "jaVaTpoiNt";
+
+        String toggledName = name.chars()
+                .mapToObj(c -> Character.isUpperCase((char) c) ? Character.toLowerCase((char) c) : Character.toUpperCase((char) c))
+                .map(String::valueOf).collect(Collectors.joining());
+        System.out.println(toggledName);
     }
 
     private static void checkChars() {
