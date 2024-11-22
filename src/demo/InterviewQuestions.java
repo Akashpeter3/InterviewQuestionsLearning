@@ -31,8 +31,58 @@ public class InterviewQuestions {
         //secondLargestNumber();
         //reverseNumber();
         //reverseNumberTraditionalWay();
-       // largestElementInArray();
+        // largestElementInArray();
+        //countingOFDigits();
+        //countFreequency();
+        //checkChars();
 
+
+    }
+
+    private static void checkChars() {
+
+        int number = 5647;
+        //number
+        String numberString = "2132342";
+        //numberString.chars()
+        int[] numArray = {543534};
+        //numArray
+        String[] stringArray = {"2132342"};
+        // stringArray
+
+    }
+
+    private static void countFreequency() {
+        String number = "99991111000";
+
+        Map<Character, Long> collect = number.chars().mapToObj(c -> (char) c).collect(Collectors.groupingBy(c -> c, Collectors.counting()));
+        int count = 0;
+        collect.forEach((k, v) -> System.out.println("number " + k + " is " + v + " times"));
+
+        for (Map.Entry<Character, Long> entryMap : collect.entrySet()) {
+            count++;
+            if (count == 2) {
+                System.out.println(entryMap.getKey());
+            }
+        }
+
+
+    }
+
+    private static void countingOFDigits() {
+        int number = 5647;
+        int count = 0;
+
+//        double temps = 5647;
+//        System.out.println(temps/ 10);
+
+        int temp = number;
+
+        while (temp != 0) {
+            temp /= 10;
+            count++;
+        }
+        System.out.println(count);
 
     }
 
