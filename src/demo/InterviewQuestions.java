@@ -37,7 +37,7 @@ public class InterviewQuestions {
         //checkChars();
         //toggleString();
         //uniqueCharacters();
-        secondLargestNumberUsingJava8();
+        //secondLargestNumberUsingJava8();
 
 
     }
