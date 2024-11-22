@@ -14,10 +14,10 @@ public class InterviewQuestions {
         //reverseString();
         //factorialNumber();
         //palindromeCheck();
-        // largestNumber();
+        //largestNumber();
         // fibinocciSeries();
-        //duplicateNumber();
-        //checkGreaterThan();
+        // duplicateNumber();
+        // checkGreaterThan();
         // sortingNamesLambda();
         // filterEvenNumbers();
         // optionalExample();
@@ -25,10 +25,85 @@ public class InterviewQuestions {
         // functionInterfaceExample();
         // parallelStreamExample();
         //capitaliseFirstWordOfString();
-       // lowerCaseFirstCharacterStringUsingAtomicInteger();
-        usingSubstringToUpperCaase();
+        //lowerCaseFirstCharacterStringUsingAtomicInteger();
+        //usingSubstringToUpperCaase();
+        //reverseStringTraditionalWay();
+        //secondLargestNumber();
+        //reverseNumber();
+        //reverseNumberTraditionalWay();
+       // largestElementInArray();
 
 
+    }
+
+    private static void largestElementInArray() {
+
+        int[] array = {1, 5, 90, 400, 280, 493, 284};
+        Arrays.stream(array).max().ifPresent(System.out::println);
+    }
+
+    private static void reverseNumberTraditionalWay() {
+        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        String stringNumbers = "";
+        for (int i = numbers.length - 1; i >= 0; i--) {
+            stringNumbers += String.valueOf(numbers[i]);
+            if (i != 0) {
+                stringNumbers += ",";
+            }
+        }
+
+        System.out.println(stringNumbers);
+
+
+    }
+
+    private static void reverseNumber() {
+
+        int[] numberArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+        Integer[] boxedArray = Arrays.stream(numberArray).boxed().toArray(Integer[]::new);
+        Arrays.sort(boxedArray, Collections.reverseOrder());
+
+        int[] reverseNumberArray = Arrays.stream(boxedArray).mapToInt(Integer::intValue).toArray();
+        System.out.println(Arrays.toString(reverseNumberArray));
+
+
+    }
+
+    private static void secondLargestNumber() {
+
+        int[] numbers = {1, 6, 2, 10, 300, 433, 446, 35, 903};
+        int largest = numbers[0];
+        int secondLargest = numbers[1];
+        int temp = 0;
+
+        if (secondLargest > largest) {
+            temp = largest;
+            largest = secondLargest;
+            secondLargest = temp;
+        }
+
+        for (int i = 2; i < numbers.length; i++) {
+            if (numbers[i] > largest) {
+                temp = largest;
+                largest = numbers[i];
+                secondLargest = temp;
+            }
+        }
+
+        System.out.println(secondLargest);
+
+
+    }
+
+    private static void reverseStringTraditionalWay() {
+        String name = "Peter";
+        char[] nameArray = name.toCharArray();
+        String reversed = "";
+        for (int i = name.length() - 1; i >= 0; i--) {
+            reversed += nameArray[i];
+        }
+        System.out.println(reversed);
     }
 
     private static void usingSubstringToUpperCaase() {
@@ -41,7 +116,7 @@ public class InterviewQuestions {
         String name = "John Doe";
         AtomicInteger counter = new AtomicInteger(0);
         String changedName = name.chars()
-                .mapToObj(i -> counter.getAndIncrement() == 0 ? Character.toLowerCase((char)i) : (char)i)
+                .mapToObj(i -> counter.getAndIncrement() == 0 ? Character.toLowerCase((char) i) : (char) i)
                 .map(String::valueOf)
                 .collect(Collectors.joining());
 
