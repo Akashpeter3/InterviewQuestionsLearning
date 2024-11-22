@@ -37,8 +37,25 @@ public class InterviewQuestions {
         //checkChars();
         //toggleString();
         //uniqueCharacters();
+        secondLargestNumberUsingJava8();
 
 
+    }
+
+    private static void secondLargestNumberUsingJava8() {
+        int[] numbers = {10, 20, 35, 5, 35, 40, 25};
+
+        //5,10,20,25,35,40
+
+        int number = Arrays.stream(numbers)
+                .distinct()
+                .sorted()
+                .skip(numbers.length - 2)
+                .peek(System.out::println)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Array must have least two unique numbers"));
+
+        System.out.println(number);
     }
 
     private static void uniqueCharacters() {
