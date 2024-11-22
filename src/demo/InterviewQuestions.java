@@ -36,6 +36,27 @@ public class InterviewQuestions {
         //countFreequency();
         //checkChars();
         //toggleString();
+        uniqueCharacters();
+
+
+    }
+
+    private static void uniqueCharacters() {
+
+        String input = "pppdaf";
+
+        Map<Character, Long> collect = input.chars()
+                .mapToObj(i -> (char) i)
+                .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+
+        String uniqNames = collect.entrySet().stream()
+                .filter(e -> e.getValue() == 1)
+                .map(Map.Entry::getKey)
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+
+
+        System.out.println(uniqNames);
 
 
     }
