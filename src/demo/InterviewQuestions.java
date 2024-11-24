@@ -40,7 +40,21 @@ public class InterviewQuestions {
         //uniqueCharacters();
         //secondLargestNumberUsingJava8();
         //findMissingNumbersArray();
-        // convertIntStreamToStringStream();
+        //convertIntStreamToStringStream();
+        //firstEvenNumberGreaterThanTen();
+
+
+    }
+
+    private static void firstEvenNumberGreaterThanTen() {
+
+        Optional<Integer> first = Arrays.asList(1, 4, 10, 30, 33, 2, 6, 8, 29, 50, 34)
+                .stream()
+                .filter(e -> e > 10)
+                .filter(e -> e % 2 == 0)
+                .findFirst();
+
+        first.ifPresentOrElse(System.out::println, () -> System.out.println("number not found"));
 
 
     }
@@ -154,9 +168,6 @@ public class InterviewQuestions {
         int number = 5647;
         int count = 0;
 
-//        double temps = 5647;
-//        System.out.println(temps/ 10);
-
         int temp = number;
 
         while (temp != 0) {
@@ -164,7 +175,6 @@ public class InterviewQuestions {
             count++;
         }
         System.out.println(count);
-
     }
 
     private static void largestElementInArray() {
@@ -184,8 +194,6 @@ public class InterviewQuestions {
         }
 
         System.out.println(stringNumbers);
-
-
     }
 
     private static void reverseNumber() {
@@ -223,8 +231,6 @@ public class InterviewQuestions {
         }
 
         System.out.println(secondLargest);
-
-
     }
 
     private static void reverseStringTraditionalWay() {
