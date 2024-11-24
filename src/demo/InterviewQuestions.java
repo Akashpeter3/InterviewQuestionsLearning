@@ -43,7 +43,75 @@ public class InterviewQuestions {
         //convertIntStreamToStringStream();
         //firstEvenNumberGreaterThanTen();
         //sortListOfEmployeesBySalary();
+        //findMaximumAndMinimumOfListOfNumbers();
+        //partitionListEvenAndOddNumber();
+        //longestAndShortestWordInList();
+        //flatternListofList();
+        //sumOfSquaresEvenList();
 
+    }
+
+    private static void sumOfSquaresEvenList() {
+        int sum = Arrays.asList(1, 4, 2, 6, 7, 8, 3, 9).stream()
+                .filter(n -> n % 2 == 0)
+                .mapToInt(n -> n * n)
+                .sum();
+
+        System.out.println(sum);
+
+    }
+
+    private static void flatternListofList() {
+        List<List<Integer>> numberList = List.of(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+        numberList.stream()
+                .flatMap(List::stream)
+                .forEach(System.out::println);
+    }
+
+    private static void longestAndShortestWordInList() {
+        String longestWord = Stream.of("Java", "Streams", "Collectors", "Features")
+                .max((a, b) -> a.length() - b.length())
+                .orElse("No Words");
+
+        String shortest = Stream.of("Java", "Streams", "Collectors", "Features")
+                .min((a, b) -> a.length() - b.length())
+                .orElse("No Words");
+
+        System.out.println(longestWord);
+        System.out.println(shortest);
+    }
+
+    private static void partitionListEvenAndOddNumber() {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+
+        Map<Boolean, List<Integer>> partition = numbers.stream()
+                .collect(Collectors.partitioningBy((n -> n % 2 == 0)));
+
+        System.out.println("Even number " + partition.get(true));
+        System.out.println("Odd number " + partition.get(false));
+
+        List<Integer> numberList = Arrays.asList(-1, 2, 3, 4, -5, 6);
+
+        Map<Boolean, List<Integer>> numberListPartion = numberList
+                .stream()
+                .collect(Collectors.partitioningBy(n -> n > 0));
+
+        System.out.println("Positive number " + numberListPartion.get(true));
+        System.out.println("Negative number " + numberListPartion.get(false));
+
+
+    }
+
+    private static void findMaximumAndMinimumOfListOfNumbers() {
+        int max = Arrays.asList(3, 5, 7, 2, 8).stream()
+                .max(Integer::compareTo)
+                .orElseThrow();
+
+        int min = Arrays.asList(3, 5, 7, 2, 8).stream()
+                .min(Integer::compareTo)
+                .orElseThrow();
+
+        System.out.println(max + " " + min);
 
     }
 
