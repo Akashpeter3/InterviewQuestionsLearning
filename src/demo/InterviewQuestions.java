@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -48,6 +49,33 @@ public class InterviewQuestions {
         //longestAndShortestWordInList();
         //flatternListofList();
         //sumOfSquaresEvenList();
+        //reverseStringUsingJava8();
+
+    }
+
+    private static void reverseStringUsingJava8() {
+
+        String name = "Akash";
+
+        //first way
+        String reversed = IntStream.range(0, name.length())
+                .mapToObj(i -> name.charAt(name.length() - 1 - i))
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+
+
+        //second way
+     String  reversedWithSecondWay =  name.chars()
+                .mapToObj(i -> (char) i)
+                .collect(Collectors.collectingAndThen(Collectors.toList(),list->{
+                    Collections.reverse(list);
+                    return list.stream();
+                })).map(String::valueOf)
+                .collect(Collectors.joining());
+
+        System.out.println(reversed);
+        System.out.println(reversedWithSecondWay);
+
 
     }
 
@@ -91,7 +119,6 @@ public class InterviewQuestions {
         System.out.println("Odd number " + partition.get(false));
 
         List<Integer> numberList = Arrays.asList(-1, 2, 3, 4, -5, 6);
-
         Map<Boolean, List<Integer>> numberListPartion = numberList
                 .stream()
                 .collect(Collectors.partitioningBy(n -> n > 0));
