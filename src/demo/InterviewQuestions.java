@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class InterviewQuestions {
 
@@ -38,6 +39,37 @@ public class InterviewQuestions {
         //toggleString();
         //uniqueCharacters();
         //secondLargestNumberUsingJava8();
+        //findMissingNumbersArray();
+        // convertIntStreamToStringStream();
+
+
+    }
+
+    private static void convertIntStreamToStringStream() {
+
+        IntStream intStream = IntStream.of(1, 2, 3, 4);
+
+        intStream.mapToObj(i -> "Value " + i)
+                .map(String::valueOf)
+                .filter(e -> !e.contains("2"))
+                .toList()
+                .forEach(System.out::println);
+
+
+    }
+
+    private static void findMissingNumbersArray() {
+
+        List<Integer> numberList = Arrays.asList(3, 7, 5, 9);
+
+        List<Integer> integerList = IntStream.rangeClosed(1, 10)
+                .boxed()
+                .toList();
+
+        integerList.stream()
+                .filter(num -> !numberList.contains(num))
+                .toList()
+                .forEach(System.out::println);
 
 
     }
