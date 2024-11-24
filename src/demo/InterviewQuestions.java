@@ -50,7 +50,17 @@ public class InterviewQuestions {
         //flatternListofList();
         //sumOfSquaresEvenList();
         //reverseStringUsingJava8();
+        //integerDivisionCheck();
 
+    }
+
+    private static void integerDivisionCheck() {
+        int a = 5, b = 2, c = 0;
+        double d = 2;
+        c = a / b;
+        double result = (double) a / b;
+        System.out.println(c);
+        System.out.println(result);
     }
 
     private static void reverseStringUsingJava8() {
@@ -65,9 +75,9 @@ public class InterviewQuestions {
 
 
         //second way
-     String  reversedWithSecondWay =  name.chars()
+        String reversedWithSecondWay = name.chars()
                 .mapToObj(i -> (char) i)
-                .collect(Collectors.collectingAndThen(Collectors.toList(),list->{
+                .collect(Collectors.collectingAndThen(Collectors.toList(), list -> {
                     Collections.reverse(list);
                     return list.stream();
                 })).map(String::valueOf)
