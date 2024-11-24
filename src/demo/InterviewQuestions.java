@@ -32,7 +32,7 @@ public class InterviewQuestions {
         //secondLargestNumber();
         //reverseNumber();
         //reverseNumberTraditionalWay();
-        // largestElementInArray();
+        //largestElementInArray();
         //countingOFDigits();
         //countFreequency();
         //checkChars();
@@ -42,8 +42,54 @@ public class InterviewQuestions {
         //findMissingNumbersArray();
         //convertIntStreamToStringStream();
         //firstEvenNumberGreaterThanTen();
+        //sortListOfEmployeesBySalary();
 
 
+    }
+
+    private static void sortListOfEmployeesBySalary() {
+
+        class Employee {
+            String name;
+            double salary;
+
+            Employee(String name, double salary) {
+                this.name = name;
+                this.salary = salary;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public double getSalary() {
+                return salary;
+            }
+
+            public void setSalary(double salary) {
+                this.salary = salary;
+            }
+
+            @Override
+            public String toString() {
+                return name + ": " + salary;
+            }
+        }
+
+        List<Employee> employeeList = Arrays.asList(
+                new Employee("Akash", 40000),
+                new Employee("Varun", 60000),
+                new Employee("Rudra", 70000)
+        );
+
+        List<Employee> sortedEmployees = employeeList.stream()
+                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())
+                .toList();
+        sortedEmployees.forEach(System.out::println);
     }
 
     private static void firstEvenNumberGreaterThanTen() {
@@ -154,12 +200,19 @@ public class InterviewQuestions {
         int count = 0;
         collect.forEach((k, v) -> System.out.println("number " + k + " is " + v + " times"));
 
-        for (Map.Entry<Character, Long> entryMap : collect.entrySet()) {
-            count++;
-            if (count == 2) {
-                System.out.println(entryMap.getKey());
-            }
-        }
+
+        collect.entrySet().stream().skip(1)
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .ifPresent(System.out::println);
+
+//
+//        for (Map.Entry<Character, Long> entryMap : collect.entrySet()) {
+//            count++;
+//            if (count == 2) {
+//                System.out.println(entryMap.getKey());
+//            }
+//        }
 
 
     }
