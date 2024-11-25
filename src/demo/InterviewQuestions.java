@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 public class InterviewQuestions {
 
     public static void main(String[] args) {
+
         //reverseString();
         //factorialNumber();
         //palindromeCheck();
@@ -51,7 +52,39 @@ public class InterviewQuestions {
         //sumOfSquaresEvenList();
         //reverseStringUsingJava8();
         //integerDivisionCheck();
+        //countOccuranceEachCharacter();
+        //longestStringInList();
+        //sumOfIntegerInListReduce();
 
+
+
+
+    }
+
+    private static void sumOfIntegerInListReduce() {
+        int sum = Stream.of(1, 5, 7, 9, 2, 7)
+                .reduce(Integer::sum).orElse(0);
+        System.out.println(sum);
+    }
+
+    private static void longestStringInList() {
+
+        List<String> words = Arrays.asList("apple", "banana", "cherry", "blueberry");
+
+        String word = words.stream()
+                .reduce((word1, word2) -> word1.length() > word2.length() ? word1 : word2).orElse("No Words");
+
+        System.out.println(word);
+
+    }
+
+    private static void countOccuranceEachCharacter() {
+        String input = "programming";
+
+        Map<Character, Long> collect = input.chars().mapToObj(i -> (char) i)
+                .collect(Collectors.groupingBy(i -> i, Collectors.counting()));
+
+        System.out.println(collect);
     }
 
     private static void integerDivisionCheck() {
