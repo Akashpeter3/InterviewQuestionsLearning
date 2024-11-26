@@ -116,16 +116,47 @@ public class TestJava {
 
         int number = 5647;
 
-      int length =  String.valueOf(number).length();
-      printFunction(length);
+        int length = String.valueOf(number).length();
+        printFunction(length);
 
         int[] array = {1, 5, 90, 400, 280, 493, 284};
         Arrays.stream(array).max().ifPresent(System.out::println);
 
         String myName = "Akash Peter";
 
-       String reverseMyName = new StringBuilder(myName).reverse().toString();
-       printFunction(reverseMyName);
+        String reverseMyName = new StringBuilder(myName).reverse().toString();
+        //printFunction(reverseMyName);
+
+        int[] arrays = {1, 9,};
+        HashSet<Integer> seen = new HashSet<>();
+        HashSet<Integer> duplicates = new HashSet<>();
+
+        for (int arrayy : arrays) {
+            if (!seen.add(arrayy)) {
+                duplicates.add(arrayy);
+            }
+
+        }
+        //printFunction(duplicates);
+
+        int values = IntStream.rangeClosed(1, 5)
+                .boxed()
+                .distinct()
+                .reduce(1, (i, c) -> i * c);
+        printFunction(values);
+
+
+        int[] numbers = {10, 20, 35, 5, 35, 40, 25};
+        //{5,10,20,35,40}
+        int  numberss = Arrays.stream(numbers)
+                .distinct()
+                .sorted()
+                .skip(numbers.length - 3)
+                .findFirst()
+                        .orElse(0);
+
+
+        printFunction(numberss);
 
 
         //printFunction(misingnumberList);
