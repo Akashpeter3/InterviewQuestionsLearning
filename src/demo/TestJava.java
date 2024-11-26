@@ -148,15 +148,45 @@ public class TestJava {
 
         int[] numbers = {10, 20, 35, 5, 35, 40, 25};
         //{5,10,20,35,40}
-        int  numberss = Arrays.stream(numbers)
+        int numberss = Arrays.stream(numbers)
                 .distinct()
                 .sorted()
                 .skip(numbers.length - 3)
                 .findFirst()
-                        .orElse(0);
+                .orElse(0);
 
 
         printFunction(numberss);
+
+        String[] arrayString = {"vishnu", "arun", "dravid", "manu", "sena", "john"};
+
+//        Arrays.stream(arrayString)
+//                .map(e -> Character.toUpperCase(e.charAt(0)) + e.substring(1))
+//                .toList()
+//                .forEach(System.out::println);
+
+//        Arrays.stream(arrayString)
+//                .filter(na -> na.equals("vishnu"))
+//                .toList()
+//                .forEach(System.out::println);
+
+//        String wordString = Arrays.stream(arrayString)
+//                .skip(1)
+//                .findFirst()
+//                .orElse("no words");
+
+//     long count =   Arrays.stream(arrayString).count();
+//     printFunction(count);
+
+//      String nammess=  Arrays.stream(arrayString).max((a,b)->a.length()-b.length()).orElse("no word");
+//        System.out.println(nammess);
+
+//        Arrays.stream(arrayString)
+//                .sorted(Comparator.comparing(String::length))
+//                .skip(2).findFirst()
+//                .ifPresent(System.out::println);
+
+
 
 
         //printFunction(misingnumberList);
