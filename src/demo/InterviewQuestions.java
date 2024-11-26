@@ -42,7 +42,7 @@ public class InterviewQuestions {
         //uniqueCharacters();
         //secondLargestNumberUsingJava8();
         //findMissingNumbersArray();
-        //convertIntStreamToStringStream();
+        convertIntStreamToStringStream();
         //firstEvenNumberGreaterThanTen();
         //sortListOfEmployeesBySalary();
         //findMaximumAndMinimumOfListOfNumbers();
@@ -247,8 +247,7 @@ public class InterviewQuestions {
 
         IntStream intStream = IntStream.of(1, 2, 3, 4);
 
-        intStream.mapToObj(i -> "Value " + i)
-                .map(String::valueOf)
+        intStream.mapToObj(String::valueOf)
                 .filter(e -> !e.contains("2"))
                 .toList()
                 .forEach(System.out::println);

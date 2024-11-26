@@ -87,7 +87,7 @@ public class TestJava {
                 .distinct()
                 .collect(Collectors.partitioningBy(i -> i % 2 == 0));
 
-        int[] numberArray = {1, 5, 9};
+        int[] numberArray = {1, 5, 9, 4};
 
         List<Integer> integerList = Arrays.stream(numberArray).boxed().toList();
 
@@ -98,16 +98,42 @@ public class TestJava {
                 .toList()
                 .forEach(TestJava::printFunction);
 
+        Arrays.stream(numberArray).boxed()
+                .filter(num -> num > 2)
+                .filter(num -> num % 2 == 0)
+                .findFirst()
+                .ifPresentOrElse(TestJava::printFunction, () -> System.out.println("No number present"));
+
+        String name = "jaVaTpoiNt";
+
+        String toggle = name.chars()
+                .mapToObj(i -> (char) i)
+                .map(i -> Character.isUpperCase((i)) ? Character.toLowerCase((i)) : Character.toUpperCase((i)))
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+
+        printFunction(toggle);
+
+        int number = 5647;
+
+      int length =  String.valueOf(number).length();
+      printFunction(length);
+
+        int[] array = {1, 5, 90, 400, 280, 493, 284};
+        Arrays.stream(array).max().ifPresent(System.out::println);
+
+
         //printFunction(misingnumberList);
 
         printFunction("////////");
-        printFunction(value);
-        printFunction(max);
-        printFunction(maxReduce);
-        printFunction(sumReduce);
-        printFunction(value);
-        printFunction(partionGroup.get(true));
-        printFunction(partionGroup.get(false));
+//        printFunction(value);
+//        printFunction(max);
+//        printFunction(maxReduce);
+//        printFunction(sumReduce);
+//        printFunction(value);
+//        printFunction(partionGroup.get(true));
+//        printFunction(partionGroup.get(false));
+
 
 //
 
