@@ -122,6 +122,11 @@ public class TestJava {
         int[] array = {1, 5, 90, 400, 280, 493, 284};
         Arrays.stream(array).max().ifPresent(System.out::println);
 
+        String myName = "Akash Peter";
+
+       String reverseMyName = new StringBuilder(myName).reverse().toString();
+       printFunction(reverseMyName);
+
 
         //printFunction(misingnumberList);
 
