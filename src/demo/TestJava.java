@@ -14,16 +14,16 @@ public class TestJava {
                 .flatMap(List::stream)
                 .sorted()
                 .toList()
-                .forEach(System.out::println);
+                .forEach(TestJava::printFunction);
 
         Stream.of(Arrays.asList("Varun", "Manu", "Serin", "Akash")).flatMap(List::stream)
                 .sorted(Comparator.naturalOrder())
-                .forEach(System.out::println);
+                .forEach(TestJava::printFunction);
 
         Stream.of(Arrays.asList("Varun", "Manu", "Serin", "Akash"))
                 .flatMap(List::stream)
                 .sorted(Comparator.reverseOrder())
-                .forEach(System.out::println);
+                .forEach(TestJava::printFunction);
 
 
         int[] arr = {1, 9, 2, 1, 4, 6, 2, 3, 1, 6, 9};
@@ -35,7 +35,7 @@ public class TestJava {
         countMap.entrySet().stream()
                 .filter(e -> e.getValue() > 1)
                 .map(Map.Entry::getKey)
-                .forEach(System.out::println);
+                .forEach(TestJava::printFunction);
 
         printFunction(".................");
 
@@ -43,22 +43,22 @@ public class TestJava {
                 .filter(e -> e.getValue() == 1)
                 .map(Map.Entry::getKey)
                 .toList()
-                .forEach(System.out::println);
+                .forEach(TestJava::printFunction);
 
         Map<Boolean, List<Integer>> partitionList = Arrays.stream(arr)
                 .boxed()
                 .distinct()
                 .collect(Collectors.partitioningBy(i -> i > 5));
 
-        System.out.println("Greater than 5 " + partitionList.get(true));
-        System.out.println("Less than 5 " + partitionList.get(false));
+        printFunction("Greater than 5 " + partitionList.get(true));
+        printFunction("Less than 5 " + partitionList.get(false));
 
         int[] sortedArray = Arrays.stream(arr)
                 .sorted()
                 .distinct()
                 .toArray();
 
-        System.out.println(Arrays.toString(sortedArray));
+        printFunction(Arrays.toString(sortedArray));
 
         int max = Arrays.stream(arr)
                 .boxed()
@@ -102,7 +102,7 @@ public class TestJava {
                 .filter(num -> num > 2)
                 .filter(num -> num % 2 == 0)
                 .findFirst()
-                .ifPresentOrElse(TestJava::printFunction, () -> System.out.println("No number present"));
+                .ifPresentOrElse(TestJava::printFunction, () -> printFunction("No number present"));
 
         String name = "jaVaTpoiNt";
 
@@ -120,7 +120,7 @@ public class TestJava {
         printFunction(length);
 
         int[] array = {1, 5, 90, 400, 280, 493, 284};
-        Arrays.stream(array).max().ifPresent(System.out::println);
+        Arrays.stream(array).max().ifPresent(TestJava::printFunction);
 
         String myName = "Akash Peter";
 
@@ -160,6 +160,8 @@ public class TestJava {
 
         String[] arrayString = {"vishnu", "arun", "dravid", "manu", "sena", "john"};
 
+
+
 //        Arrays.stream(arrayString)
 //                .map(e -> Character.toUpperCase(e.charAt(0)) + e.substring(1))
 //                .toList()
@@ -185,6 +187,47 @@ public class TestJava {
 //                .sorted(Comparator.comparing(String::length))
 //                .skip(2).findFirst()
 //                .ifPresent(System.out::println);
+
+
+        int[] a = {1, 4, 7, 9};
+        int[] b = {4, 8, 9, 2};
+
+        int[] newArray = IntStream.range(0, a.length)
+                .map(i -> a[i] * b[i])
+                .toArray();
+
+        printFunction(Arrays.toString(newArray));
+
+     int [] numArray =  { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+     String naamee= "Akash";
+
+
+   String reverseNameee=  naamee.chars().mapToObj(i -> (char) i).sorted(Comparator.reverseOrder())
+             .map(String::valueOf).collect(Collectors.joining());
+
+   printFunction(reverseNameee);
+
+   Arrays.stream(numArray)
+             .boxed()
+             .sorted(Comparator.reverseOrder()).toList().forEach(TestJava::printFunction);
+
+String myOwnName =  "Akash Peter";
+
+
+
+//     String [] splitArray =  Arrays
+//               .stream(myOwnName.split(" "))
+//               .toArray(String[]::new);
+
+//        System.out.println(splitArray[0]);
+//        System.out.println(splitArray[1]);
+        String homeName ="Palathai Parambu";
+      String[] arrayyys =  Arrays.stream(homeName.split(" "))
+                .toArray(String[]::new);
+
+        System.out.println(Arrays.toString(arrayyys));
+
 
 
 
