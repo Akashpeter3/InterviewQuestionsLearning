@@ -42,7 +42,7 @@ public class InterviewQuestions {
         //uniqueCharacters();
         //secondLargestNumberUsingJava8();
         //findMissingNumbersArray();
-        convertIntStreamToStringStream();
+        //convertIntStreamToStringStream();
         //firstEvenNumberGreaterThanTen();
         //sortListOfEmployeesBySalary();
         //findMaximumAndMinimumOfListOfNumbers();
@@ -55,8 +55,55 @@ public class InterviewQuestions {
         //countOccuranceEachCharacter();
         //longestStringInList();
         //sumOfIntegerInListReduce();
+        largestAmountDecimalNumbers();
 
 
+    }
+
+    private static void largestAmountDecimalNumbers() {
+
+        String value1 = "1.2.9.1";
+        String value2 = "1.3";
+
+        String[] part1 = value1.split("\\.");
+        System.out.println(part1.length);
+        //[1,2,9,1]
+        String[] part2 = value2.split("\\.");
+        //[1,3]
+
+        int max = Math.max(part1.length, part2.length);
+
+//0,5
+        int result = IntStream.range(0, max)
+                .map(i -> {
+
+                    //0<6 =1
+                    //1<6=2
+                    //2<6=9
+                    //3<6=1
+                    int v1 = i < part1.length ? Integer.parseInt(part1[i]) : 0;
+
+                    //0<2=1
+                    //1<2=3
+                    //2<2=0
+                    //3<2=0
+
+
+                    int v2 = i < part2.length ? Integer.parseInt(part2[i]) : 0;
+                    return Integer.compare(v1, v2);
+                }).filter(num -> num != 0)
+                .findFirst()
+                .orElse(0);
+
+        if (result > 0) {
+            System.out.println(value1 + " is greater than " + value2);
+        } else if (result < 0) {
+            System.out.println(value1 + " is less than " + value2);
+
+        } else {
+            System.out.println("Both numbers are same ");
+        }
+        //.forEach(System.out::println);
 
 
     }

@@ -161,7 +161,6 @@ public class TestJava {
         String[] arrayString = {"vishnu", "arun", "dravid", "manu", "sena", "john"};
 
 
-
 //        Arrays.stream(arrayString)
 //                .map(e -> Character.toUpperCase(e.charAt(0)) + e.substring(1))
 //                .toList()
@@ -198,22 +197,27 @@ public class TestJava {
 
         printFunction(Arrays.toString(newArray));
 
-     int [] numArray =  { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] numArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-     String naamee= "Akash";
+        Arrays.stream(numArray)
+                .boxed()
+                .sorted(Comparator.reverseOrder())
+                .mapToInt(Integer::intValue)
+                .toArray();
+
+        String naamee = "Akash";
 
 
-   String reverseNameee=  naamee.chars().mapToObj(i -> (char) i).sorted(Comparator.reverseOrder())
-             .map(String::valueOf).collect(Collectors.joining());
+        String reverseNameee = naamee.chars().mapToObj(i -> (char) i).sorted(Comparator.reverseOrder())
+                .map(String::valueOf).collect(Collectors.joining());
 
-   printFunction(reverseNameee);
+        printFunction(reverseNameee);
 
-   Arrays.stream(numArray)
-             .boxed()
-             .sorted(Comparator.reverseOrder()).toList().forEach(TestJava::printFunction);
+        Arrays.stream(numArray)
+                .boxed()
+                .sorted(Comparator.reverseOrder()).toList().forEach(TestJava::printFunction);
 
-String myOwnName =  "Akash Peter";
-
+        String myOwnName = "Akash Peter";
 
 
 //     String [] splitArray =  Arrays
@@ -222,14 +226,18 @@ String myOwnName =  "Akash Peter";
 
 //        System.out.println(splitArray[0]);
 //        System.out.println(splitArray[1]);
-        String homeName ="Palathai Parambu";
-      String[] arrayyys =  Arrays.stream(homeName.split(" "))
+        String homeName = "Palathai Parambu";
+        String[] arrayyys = Arrays.stream(homeName.split(" "))
                 .toArray(String[]::new);
 
-        System.out.println(Arrays.toString(arrayyys));
+        printFunction(arrayyys[0]);
+        printFunction(arrayyys[1]);
 
+        int nu = 55555;
 
-
+        Long counted = String.valueOf(number).chars()
+                .count();
+        printFunction(counted);
 
 
         //printFunction(misingnumberList);
