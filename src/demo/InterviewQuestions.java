@@ -67,9 +67,13 @@ public class InterviewQuestions {
 
         String[] part1 = value1.split("\\.");
         System.out.println(part1.length);
-        //[1,2,9,1]
+        //part1 = [1,2,9,1]
+        //i = 0,1,2,3
+        //length = 6
         String[] part2 = value2.split("\\.");
-        //[1,3]
+        //part2 =[1,3]
+        //i = 0,1,2,3
+        //length = 2
 
         int max = Math.max(part1.length, part2.length);
 
