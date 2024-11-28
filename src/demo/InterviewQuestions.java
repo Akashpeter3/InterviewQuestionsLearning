@@ -69,7 +69,7 @@ public class InterviewQuestions {
         System.out.println(part1.length);
         //part1 = [1,2,9,1]
         //i = 0,1,2,3
-        //length = 6
+        //length = 4
         String[] part2 = value2.split("\\.");
         //part2 =[1,3]
         //i = 0,1,2,3
@@ -77,7 +77,7 @@ public class InterviewQuestions {
 
         int max = Math.max(part1.length, part2.length);
 
-//0,5
+
         int result = IntStream.range(0, max)
                 .map(i -> {
 
@@ -107,7 +107,7 @@ public class InterviewQuestions {
         } else {
             System.out.println("Both numbers are same ");
         }
-        //.forEach(System.out::println);
+
 
 
     }
