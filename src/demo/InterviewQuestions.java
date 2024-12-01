@@ -81,8 +81,6 @@ public class InterviewQuestions {
         String[] nameArrayNew = new String[name.length()];
 
         for (int i = 0; i < nameCharArray.length; i++) {
-
-
             nameArrayNew[i] = name.substring(0, i + 1);
         }
 
