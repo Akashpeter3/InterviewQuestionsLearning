@@ -1,5 +1,6 @@
 package demo;
 
+import java.sql.Array;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
@@ -55,8 +56,38 @@ public class InterviewQuestions {
         //countOccuranceEachCharacter();
         //longestStringInList();
         //sumOfIntegerInListReduce();
-        largestAmountDecimalNumbers();
+        //largestAmountDecimalNumbers();
+        stringPatternCheck();
 
+
+    }
+
+    private static void stringPatternCheck() {
+
+        String name = "Akash";
+
+        //String [] nameStringArray= new Array[name.length()];
+
+
+        String[] namePattern = IntStream.range(0, name.length())
+                .mapToObj(i -> name.substring(0, i + 1))
+                .peek(System.out::println)
+                .toArray(String[]::new);
+
+        System.out.println(Arrays.toString(namePattern));
+
+        char[] nameCharArray = name.toCharArray();
+
+        String[] nameArrayNew = new String[name.length()];
+
+        for (int i = 0; i < nameCharArray.length; i++) {
+
+
+            nameArrayNew[i] = name.substring(0, i + 1);
+        }
+
+        System.out.println(Arrays.toString(nameArrayNew));
+        // System.out.println(nameCharArray);
 
     }
 
@@ -107,7 +138,6 @@ public class InterviewQuestions {
         } else {
             System.out.println("Both numbers are same ");
         }
-
 
 
     }
